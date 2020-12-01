@@ -6,13 +6,13 @@ function shadow(e) {
   const { offsetWidth: width, offsetHeight: height} = hero; // ES6 기능, == const width = hero.offsetWidth;
   let { offsetX: x, offsetY: y} = e;
 
-  if (this !== e.target)  {
+  if (this !== e.target)  {         //this의 offset값과 target의 offert 값을 일치시켜줌
     x = x + e.target.offsetLeft;
     y = y + e.target.offsetTop;
   }
   
-  const xWalk = Math.round((x / width * walk) - (walk / 2));
-  const yWalk = Math.round((y / height * walk) - (walk / 2));
+  const xWalk = Math.round((x / width * walk) - (walk / 2)); // -50 ~ 50 까지의 범위
+  const yWalk = Math.round((y / height * walk) - (walk / 2)); // -50 ~ 50 까지의 범위
 
   text.style.textShadow = `
     ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
