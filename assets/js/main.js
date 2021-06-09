@@ -3,16 +3,16 @@ const text = hero.querySelector('h1');
 const walk = 50; // 100px
 
 function shadow(e) {
-  const { offsetWidth: width, offsetHeight: height} = hero; // ES6 기능, == const width = hero.offsetWidth;
-  let { offsetX: x, offsetY: y} = e;
+  const { offsetWidth: width, offsetHeight: height } = hero;
 
-  if (this !== e.target)  {         //this의 offset값과 target의 offert 값을 일치시켜줌
+  if (this !== e.target) {
+    //this의 offset값과 target의 offert 값을 일치시켜줌
     x = x + e.target.offsetLeft;
     y = y + e.target.offsetTop;
   }
-  
-  const xWalk = Math.round((x / width * walk) - (walk / 2)); // -50 ~ 50 까지의 범위
-  const yWalk = Math.round((y / height * walk) - (walk / 2)); // -50 ~ 50 까지의 범위
+
+  const xWalk = Math.round((x / width) * walk - walk / 2); // -50 ~ 50 까지의 범위
+  const yWalk = Math.round((y / height) * walk - walk / 2); // -50 ~ 50 까지의 범위
 
   text.style.textShadow = `
     ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
@@ -20,9 +20,6 @@ function shadow(e) {
     ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
     ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
     `;
-
-
-
 }
 
 hero.addEventListener('mousemove', shadow);
